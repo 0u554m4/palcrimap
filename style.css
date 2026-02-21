@@ -1,0 +1,419 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'system-ui', sans-serif;
+}
+
+body {
+    background: #0c1a26;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 12px;
+}
+
+.bilingual-wrapper {
+    width: 1500px;
+    max-width: 100%;
+    height: 94vh;
+    background: #0f212f;
+    border-radius: 32px;
+    box-shadow: 0 30px 60px -15px black;
+    display: flex;
+    overflow: hidden;
+    border: 1px solid #2b4a5e;
+}
+
+/* sidebar – single language at a time */
+.info-sidebar {
+    width: 340px;
+    background: #0a1924;
+    color: #e6edf3;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #2f4d61;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    margin-bottom: 1.8rem;
+    border-bottom: 1px dashed #3d5e72;
+    padding-bottom: 1.2rem;
+    position: relative;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.title i {
+    color: #bf4b4b;
+    margin-right: 8px;
+}
+
+.subtitle {
+    font-size: 0.85rem;
+    color: #a0bcd0;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.subtitle span {
+    background: #1e3a4b;
+    padding: 4px 12px;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+.lang-toggle {
+    background: #2f4d61;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid #4a7a94;
+    width: fit-content;
+}
+
+.lang-toggle:hover {
+    background: #3d6077;
+    transform: scale(1.02);
+}
+
+.lang-toggle i {
+    font-size: 1rem;
+}
+
+/* Language visibility control */
+.lang-en .lang-ar-text,
+.lang-ar .lang-en-text {
+    display: none;
+}
+
+.lang-en .lang-en-text,
+.lang-ar .lang-ar-text {
+    display: inline;
+}
+
+/* RTL support for Arabic mode */
+body.lang-ar .info-sidebar {
+    direction: rtl;
+}
+
+body.lang-ar .crime-card {
+    border-left: none;
+    border-right: 6px solid #b44;
+}
+
+body.lang-ar .desc-box {
+    border-left: none;
+    border-right: 4px solid #b15555;
+}
+
+body.lang-ar .meta-item i {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+/* crime card */
+.crime-card {
+    background: #102531;
+    border-radius: 22px;
+    padding: 1.5rem 1.2rem;
+    margin: 0.3rem 0 1.5rem 0;
+    border-left: 6px solid #b44;
+    box-shadow: 0 15px 25px -10px #03080c;
+    transition: 0.2s;
+}
+
+.crime-place {
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.crime-place i {
+    color: #bf4b4b;
+    margin-right: 8px;
+}
+
+body.lang-ar .crime-place i {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+.crime-type {
+    background: #3f2930;
+    color: #fad7d7;
+    padding: 4px 14px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid #a16161;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.crime-description {
+    background: #0a1d2b;
+    padding: 1rem 1.1rem;
+    border-radius: 18px;
+    margin: 16px 0 16px 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border-left: 4px solid #b15555;
+    color: #d8e6f0;
+}
+
+body.lang-ar .crime-description {
+    border-left: none;
+    border-right: 4px solid #b15555;
+    text-align: right;
+}
+
+.meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #adc7dc;
+    border-top: 1px solid #213e50;
+    padding-top: 12px;
+}
+
+.meta-item i {
+    margin-right: 5px;
+    color: #b77e7e;
+}
+
+.footer-hint {
+    background: #0d2635;
+    color: #bed6e9;
+    padding: 1rem;
+    border-radius: 30px;
+    text-align: center;
+    margin-top: auto;
+    font-size: 0.85rem;
+    border: 1px solid #325f74;
+}
+
+#map {
+    flex: 1;
+    background: #1b3341;
+    z-index: 1;
+}
+
+.custom-marker-icon {
+    background: #aa2020;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% 50% 50% 0;
+    border: 3px solid #f0dbb0;
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 18px black;
+}
+
+.custom-marker-icon i {
+    transform: rotate(45deg);
+    color: white;
+    font-size: 1.4rem;
+}
+
+.leaflet-tooltip {
+    background: #13242f;
+    color: #f0e5d5;
+    border: 1px solid #9c5e5e;
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    border-radius: 20px;
+}
+
+.leaflet-popup-content-wrapper {
+    background: #11212e;
+    color: #f2e6d2;
+    border-radius: 18px;
+    border-left: 5px solid #b15151;
+}
+
+.leaflet-popup-tip { 
+    background: #11212e; 
+}
+
+.custom-marker-icon i { 
+    filter: drop-shadow(0 2px 4px black); 
+}
+
+@media (max-width: 700px) {
+    .bilingual-wrapper { 
+        flex-direction: column; 
+    }
+    .info-sidebar { 
+        width: 100%; 
+        height: 300px; 
+        border-right: none; 
+        border-bottom: 1px solid #2f4d61; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Theme toggle button */
+.theme-toggle {
+    background: #2f4d61;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid #4a7a94;
+    width: fit-content;
+    margin-top: 10px;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.02);
+}
+
+/* Light theme variables */
+body.light-mode {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #e8e8e8;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #dddddd;
+    --accent-color: #b44;
+    --card-bg: #ffffff;
+    --header-bg: #f0f0f0;
+    --shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Dark theme variables (default) */
+body {
+    --bg-primary: #0c1a26;
+    --bg-secondary: #0a1924;
+    --bg-tertiary: #102531;
+    --text-primary: #e6edf3;
+    --text-secondary: #a0bcd0;
+    --border-color: #2f4d61;
+    --accent-color: #b44;
+    --card-bg: #102531;
+    --header-bg: #0a1924;
+    --shadow: 0 30px 60px -15px black;
+}
+
+/* Apply theme variables */
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bilingual-wrapper {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.info-sidebar {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-right-color: var(--border-color);
+}
+
+.crime-card {
+    background: var(--card-bg);
+    border-left-color: var(--accent-color);
+    box-shadow: var(--shadow);
+}
+
+.crime-type {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--accent-color);
+}
+
+.crime-description {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border-left-color: var(--accent-color);
+}
+
+.meta-row {
+    color: var(--text-secondary);
+    border-top-color: var(--border-color);
+}
+
+.footer-hint {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+
+.sidebar-header {
+    border-bottom-color: var(--border-color);
+}
+
+.subtitle span {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+}
+
+.lang-toggle {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.lang-toggle:hover {
+    background: var(--accent-color);
+}
+
+/* Light mode specific overrides */
+body.light-mode .crime-card {
+    border-left-color: var(--accent-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+body.light-mode .crime-description {
+    background: #f9f9f9;
+    border-left-color: var(--accent-color);
+}
+
+body.light-mode .custom-marker-icon {
+    border-color: #333;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+body.light-mode .leaflet-container {
+    background: #ddd;
+}
